@@ -25,6 +25,92 @@ CREATE TABLE EMPLOYEE (
     PRIMARY KEY (Ssn)
 );
 
+CREATE TABLE PROJECT (
+    Pname VARCHAR(50),
+    Pnumber INT PRIMARY KEY,
+    Plocation VARCHAR(50),
+    Dnum INT,
+    FOREIGN KEY (Dnum) REFERENCES DEPARTMENT(Dnum) 
+);
+
+CREATE TABLE DEPENDENT (
+    Essn CHAR(9),
+    Dependent_name VARCHAR(50),
+    Sex CHAR(1),
+    Bdate DATE,
+    Relationship VARCHAR(50),
+    FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn)  
+    
+);
+
+CREATE TABLE WORKS_ON (
+    Essn CHAR(9),
+    Pno INT,
+    Hours DECIMAL(5,2),
+    FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn),  
+    FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber)  
+);
+
+CREATE TABLE DEPT_LOCATIONS (
+    Dnum INT,
+    Dlocation VARCHAR(50),
+    PRIMARY KEY (Dnum, Dlocation),
+    FOREIGN KEY (Dnum) REFERENCES DEPARTMENT(Dnum)  
+);
+
+INSERT INTO PROJECT (Pname, Pnumber, Plocation, Dnum)
+VALUES
+('ProductX', 1, 'Bellaire', 5),
+('ProductY', 2, 'Sugarland', 5),
+('ProductZ', 3, 'Houston', 5),
+('Computerization', 10, 'Stafford', 4),
+('Reorganization', 20, 'Houston', 1),
+('Newbenefits', 30, 'Stafford', 4);
+
+
+
+INSERT INTO DEPENDENT (Essn, Dependent_name, Sex, Bdate, Relationship)
+VALUES
+('333445555', 'Alice', 'F', '1986-04-05', 'Daughter'),
+('333445555', 'Theodore', 'M', '1983-10-15', 'Son'),
+('333445555', 'Joy', 'F', '1958-05-03', 'Spouse'),
+('987654321', 'Abner', 'M', '1942-02-28', 'Spouse'),
+('123456789', 'Michael', 'M', '1988-01-04', 'Son'),
+('123456789', 'Alice', 'F', '1988-12-30', 'Daughter'),
+('123456789', 'Elizabeth', 'F', '1967-05-05', 'Spouse');
+
+
+
+INSERT INTO WORKS_ON (Essn, Pno, Hours)
+VALUES
+('123456789', 1, 32.5),
+('333445555', 2, 7.5),
+('666844444', 3, 20.0),
+('453453453', 4, 20.0),
+('453445555', 5, 10.0),
+('333445555', 6, 10.0),
+('333445555', 10, 10.0);
+
+INSERT INTO DEPT_LOCATIONS (Dnum, Dlocation)
+VALUES
+(1, 'Houston'),
+(4, 'Stafford'),
+(5, 'Sugarland'),
+(5, 'Houston');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 INSERT INTO EMPLOYEE (Fname, Minit, Lname, Ssn, Bdate, Address, Sex, Salary, Super_ssn, Dno) VALUES
     ('John',     'B', 'Smith',   '123456789', '1965-01-09', '731 Fondren, Houston, TX',   'M', 30000, '333445555', 5),
