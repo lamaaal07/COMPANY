@@ -26,7 +26,6 @@ CREATE TABLE EMPLOYEE (
 );
 
 
-
 INSERT INTO EMPLOYEE (Fname, Minit, Lname, Ssn, Bdate, Address, Sex, Salary, Super_ssn, Dno) VALUES
     ('John',     'B', 'Smith',   '123456789', '1965-01-09', '731 Fondren, Houston, TX',   'M', 30000, '333445555', 5),
     ('Franklin', 'T', 'Wong',    '333445555', '1955-12-08', '638 Voss, Houston, TX',       'M', 40000, '888665555', 5),
@@ -41,6 +40,9 @@ INSERT INTO EMPLOYEE (Fname, Minit, Lname, Ssn, Bdate, Address, Sex, Salary, Sup
     ('Research',       5, '333445555', '1988-05-22'),
     ('Administration', 4, '987654321', '1995-01-01'),
     ('Headquarters',   1, '888665555', '1981-06-19'); 
+
+
+
 
 
 
